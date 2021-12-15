@@ -1,0 +1,27 @@
+{
+  "name": "contract-event-listener",
+  "version": "1.0.0",
+  "description": "Contract event listener service",
+  "main": "services/eventlistener.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aronzvi/eventlistener.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aronzvi/eventlistener/issues"
+  },
+  "homepage": "https://github.com/aronzvi/eventlistener#readme",
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0",
+    "ethers": "^5.5.1"
+  },
+    "engines": {
+    "node": ">=16.6.0"
+  }
+}
