@@ -22,7 +22,7 @@ bunnyGnosisSafeProxyAbi = require("./abi/BunnyGnosisSafeProxy");
 beefyTimelockControllerListener = require("./listeners/beefyTimelockController");
 beefyTimelockControllerAbi = require("./abi/BeefyTimelockController");
 
-revaultTimelockListener = require("./listeners/RevaultTimelock");
+revaultTimelockListener = require("./listeners/revaultTimelock");
 revaultTimelockAbi = require("./abi/RevaultTimelock");
 
 module.exports = {
