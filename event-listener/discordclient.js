@@ -11,21 +11,16 @@ client.on("ready", () => {
     console.log(`Discord logged in as ${client.user.tag}`);
 });
 
-
-async function fetchChannel(channelId) {
-    /* 
-        Ensure that we are logged in and
-        obtain a channel from Discord, or the channel cache if it's already available
-        https://discord.js.org/#/docs/main/stable/class/ChannelManager?scrollTo=fetch
-        https://github.com/discordjs/discord.js/blob/main/src/managers/ChannelManager.js#L108
-    */
-    
-        await login;
-        return await client.channels.fetch(channelId);
-}
-
 async function sendMessageToChannel(channelId, msgStr) {
-  let channel = await fetchChannel(channelId);
+/* 
+  Ensure that we are logged in and
+  obtain a channel from Discord, or the channel cache if it's already available
+  https://discord.js.org/#/docs/main/stable/class/ChannelManager?scrollTo=fetch
+  https://github.com/discordjs/discord.js/blob/main/src/managers/ChannelManager.js#L108
+*/
+
+  await login;
+  let channel = await client.channels.fetch(channelId);
   channel.send(msgStr);
 }
 
