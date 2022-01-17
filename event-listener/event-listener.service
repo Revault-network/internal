@@ -1,0 +1,13 @@
+[Unit]
+Description=event-listener - contracts event listener
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStart=node /home/ubuntu/internal/event-listener/services/eventlistener.js
+Restart=always
+EnvironmentFile=/home/ubuntu/internal/event-listener/.env
+
+[Install]
+WantedBy=multi-user.target
