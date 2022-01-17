@@ -31,7 +31,7 @@ function makeListener(cfg, contractInterfaceEvents) {
   fn.contractName = cfg.name;
   fn.eventsTable = cfg.listener.events;
   fn.eventParamsTable = utils.makeEventParamsTable(cfg.listener.events, contractInterfaceEvents);
-  console.log(fn.eventParamsTable);
+  //console.log(fn.eventParamsTable);
   if (Object.keys(cfg).includes("exData")) {
     fn.exData = cfg.exData;
   }
@@ -42,45 +42,20 @@ function makeListener(cfg, contractInterfaceEvents) {
   return fn
 }
 
-/*
-function makeListener(cfg, contractInterfaceEvents) {
-  let fn = (...args) => {
-    let numArgs = args.length - 1;
-    let eventObj = args[numArgs];                                                          
-    let event = eventObj.event;
-    console.log("got event: " + fn.contractName + ":" + event + ":" + eventObj.transactionHash);
-    let eventParams = fn.eventParamsTable[event];
-    let eventHandler =  fn.eventsTable[event];
-    eventHandler(eventObj, eventParams, fn.exData);
-  }
-
-  fn.contractName = cfg.name;
-  fn.eventsTable = cfg.listener.events;
-  fn.eventParamsTable = utils.makeEventParamsTable(cfg.listener.events, contractInterfaceEvents);
-  console.log(fn.eventParamsTable);
-  if (Object.keys(cfg).includes("exData")) {
-    fn.exData = cfg.exData;
-  }
-  else {
-    fn.exData = {};
-  }
-
-  return fn
-}
-*/
 
 function initContracts(cfg) {
     console.log("init:", cfg.name);
     for (const addr of cfg.addresses) {
         console.log(addr);
         let contract = new ethers.Contract(addr, cfg.abi, provider);
+        /*
         for (const eventSig of Object.keys(contract.interface.events)){
           console.log(eventSig);
         }
-        
+        */
         let listener = makeListener(cfg, contract.interface.events)
         for (const event of Object.keys(cfg.listener.events)) {
-            console.log("setting listener for event:", event);
+            //console.log("setting listener for event:", event);
             contract.on(event, listener);
         }
         contracts.push(contract);
