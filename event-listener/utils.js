@@ -1,10 +1,3 @@
-const discordClient = require("./discordclient");
-const channelId = "920661555589296218"; // mainnet-events-monitor 
-
-function sendVaultProviderEventToDiscord(eventObj, eventParams, exData) {
-   discordClient.sendMessageToChannel(channelId, makeVaultProviderEventStr(eventObj, exData.vaultProvider, eventParams));
-}
-
 /*
 function makeEventParamsTable(events, abi) {
   let ret = {} ;
@@ -61,6 +54,5 @@ function makeVaultProviderEventStr(eventObj, vaultProvider, eventParams) {
 
 module.exports = {
   makeVaultProviderEventStr,
-  makeEventParamsTable,
-  sendVaultProviderEventToDiscord,
+  makeEventParamsTable
 };

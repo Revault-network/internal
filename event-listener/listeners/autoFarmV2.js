@@ -1,7 +1,7 @@
-const utils = require("../utils");
+const discordClient = require("../discordclient");
 
 const events = {
-  "OwnershipTransferred(address,address)": utils.sendVaultProviderEventToDiscord,
+  "OwnershipTransferred(address,address)": discordClient.sendVaultProviderEventToRevaultDiscord,
 }
 
 module.exports = {

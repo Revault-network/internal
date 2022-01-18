@@ -1,13 +1,13 @@
-const utils = require("../utils");
+const discordClient = require("../discordclient");
 
 const events = {
-  "RoleAdminChanged(bytes32,bytes32,bytes32)": utils.sendVaultProviderEventToDiscord,
-  "RoleGranted(bytes32,address,address)": utils.sendVaultProviderEventToDiscord,
-  "RoleRevoked(bytes32,address,address)": utils.sendVaultProviderEventToDiscord,
-  "CallScheduled(bytes32,uint256,address,uint256,bytes,bytes32,uint256)": utils.sendVaultProviderEventToDiscord,
-  "CallExecuted(bytes32,uint256,address,uint256,bytes)": utils.sendVaultProviderEventToDiscord,
-  "Cancelled(bytes32)": utils.sendVaultProviderEventToDiscord,
-  "MinDelayChange(uint256,uint256)": utils.sendVaultProviderEventToDiscord
+  "RoleAdminChanged(bytes32,bytes32,bytes32)": discordClient.sendVaultProviderEventToRevaultDiscord,
+  "RoleGranted(bytes32,address,address)": discordClient.sendVaultProviderEventToRevaultDiscord,
+  "RoleRevoked(bytes32,address,address)": discordClient.sendVaultProviderEventToRevaultDiscord,
+  "CallScheduled(bytes32,uint256,address,uint256,bytes,bytes32,uint256)": discordClient.sendVaultProviderEventToRevaultDiscord,
+  "CallExecuted(bytes32,uint256,address,uint256,bytes)": discordClient.sendVaultProviderEventToRevaultDiscord,
+  "Cancelled(bytes32)": discordClient.sendVaultProviderEventToRevaultDiscord,
+  "MinDelayChange(uint256,uint256)": discordClient.sendVaultProviderEventToRevaultDiscord
 };
 
 module.exports = {
