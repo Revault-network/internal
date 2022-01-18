@@ -10,33 +10,22 @@ const provider = new ethers.providers.JsonRpcProvider(providerUrl);
 let contracts = [];
 
 function makeListener(cfg, contractInterfaceEvents) {
+  let eventParamsTable = utils.makeEventParamsTable(cfg.listener.events, contractInterfaceEvents);
+  
   let fn = (...args) => {
     let numArgs = args.length - 1;
     let eventObj = args[numArgs];                                                          
     let event = eventObj.event;
     let contractName = cfg.name;
-    let eventsTable = cfg.listener.events;
-    let eventParamsTable = utils.makeEventParamsTable(cfg.listener.events, contractInterfaceEvents);
     let exData = {};
     if (Object.keys(cfg).includes("exData")) {
       exData = cfg.exData;
     }
-    console.log("got event: " + fn.contractName + ":" + event + ":" + eventObj.transactionHash);
+    console.log("got event: " + contractName + ":" + event + ":" + eventObj.transactionHash);
     let eventSig = eventObj.eventSignature;
     let eventParams = eventParamsTable[eventSig];
-    let eventHandler = eventsTable[eventSig];
+    let eventHandler = cfg.listener.events[eventSig];
     eventHandler(eventObj, eventParams, exData);
-  }
-
-  fn.contractName = cfg.name;
-  fn.eventsTable = cfg.listener.events;
-  fn.eventParamsTable = utils.makeEventParamsTable(cfg.listener.events, contractInterfaceEvents);
-  //console.log(fn.eventParamsTable);
-  if (Object.keys(cfg).includes("exData")) {
-    fn.exData = cfg.exData;
-  }
-  else {
-    fn.exData = {};
   }
 
   return fn
