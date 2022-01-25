@@ -1,4 +1,4 @@
-# contract event listener service
+# Contract event listener service
 Listen for events of given contracts.
 
 Includes discordclient module to send messages to a given channel using discord.js
