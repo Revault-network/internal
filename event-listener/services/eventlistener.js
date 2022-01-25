@@ -17,15 +17,21 @@ function makeListener(cfg, contractInterfaceEvents) {
     let eventObj = args[numArgs];                                                          
     let event = eventObj.event;
     let contractName = cfg.name;
-    let exData = {};
+    let cfgExData = {};
     if (Object.keys(cfg).includes("exData")) {
-      exData = cfg.exData;
+      cfgExData = cfg.exData;
     }
+
     console.log("got event: " + contractName + ":" + event + ":" + eventObj.transactionHash);
     let eventSig = eventObj.eventSignature;
     let eventParams = eventParamsTable[eventSig];
     let eventHandler = cfg.listener.events[eventSig];
-    eventHandler(eventObj, eventParams, exData);
+    let exData = {
+      contractName: contractName,
+      eventParams: eventParams,
+      cfgExData: cfgExData
+    };
+    eventHandler(eventObj, exData);
   }
 
   return fn

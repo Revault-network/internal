@@ -14,8 +14,8 @@ client.on("ready", () => {
     console.log(`Discord logged in as ${client.user.tag}`);
 });
 
-function sendVaultProviderEventToRevaultDiscord(eventObj, eventParams, exData) {
-   sendMessageToChannel(REVAULT_EVENT_MONITOR_CHANNEL_ID, utils.makeVaultProviderEventStr(eventObj, exData.vaultProvider, eventParams));
+function sendVaultProviderEventToRevaultDiscord(eventObj, exData) {
+   sendMessageToChannel(REVAULT_EVENT_MONITOR_CHANNEL_ID, utils.makeVaultProviderEventStr(eventObj, exData.contractName, exData.cfgExData.vaultProvider));
 }
 
 async function sendMessageToChannel(channelId, msgStr) {
