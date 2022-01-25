@@ -60,3 +60,8 @@ If channel is private then need to add access for the bot directly in the channe
 ### View service logs
  `sudo journalctl -u event-listener.service -r -n 100`
  With follow - `sudo journalctl -u event-listener.service -f`
+
+## Updating configuration
+1.  Edit config.js or listener
+2.  Restart the service
+`sudo systemctl restart event-listener`
